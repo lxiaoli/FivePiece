@@ -29,6 +29,10 @@ public class Piece {
 		this.isWhite = isWhite;
 	}
 
+	public Piece() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getX() {
 		return x;
 	}

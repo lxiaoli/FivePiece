@@ -20,6 +20,12 @@ public class GoPanel extends JPanel {
 	 * 存放棋子
 	 */
 	private List<Piece> pieceList = new ArrayList<Piece>();
+	
+	/**
+	 * 棋子的起始点
+	 */
+	private int x = 30;
+	private int y = 30;
 
 	/**
 	 * 构造方法
@@ -64,8 +70,17 @@ public class GoPanel extends JPanel {
 			super.mouseClicked(e);
 			System.out.printf("(x=%d,y=%d)\n",e.getX(),e.getY());
 			
+			Piece pi = new Piece();
+			int mx = e.getX();
+			int my = e.getY();
+			mx = 53 * ((mx - x) / 53 + ((mx - x) % 53 > 27 ? 1 : 0))+30;
+			my = 50 * ((my - y) / 50 + ((my - y) % 50 > 25 ? 1 : 0))+30;
+			System.out.printf("(mx=%d,my=%d)\n",mx,my);
+			
+			
 			//创建棋子，把旗子放到列表中去
-			Piece piece = new Piece(e.getX(), e.getY(), isWhite);
+			
+			Piece piece = new Piece(mx, my, isWhite);
 			pieceList.add(piece);
 			isWhite = !isWhite;
 			
